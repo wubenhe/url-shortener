@@ -43,3 +43,6 @@ class Link(models.Model):
 
     def get_preview_path(self):
         return reverse('url_shortener:preview', args=(self.alias,))
+
+    def get_delete_path(self):
+        return reverse('url_shortener:delete', args=(self.alias,))

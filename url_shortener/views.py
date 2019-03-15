@@ -41,6 +41,10 @@ def index(request):
         'absolute_index_url': get_absolute_short_url(request, ''),
     })
 
+def delete(request, alias):
+    instance = Link.objects.get(alias__exact=alias)
+    instance.delete()
+    return HttpResponseRedirect(reverse('url_shortener:analytics'))
 
 def preview(request, alias):
     link = get_object_or_404(Link, alias__iexact=alias)
@@ -48,6 +52,7 @@ def preview(request, alias):
         'alias': alias,
         'absolute_short_url': get_absolute_short_url(request, alias, remove_schema=False),
         'url': link.url,
+        'get_delete_path': link.get_delete_path()
     })
 
 

@@ -23,6 +23,7 @@
 <div class="btn-toolbar" role="toolbar" aria-label="buttons-toolbar">
   <a class="btn btn-primary" href="{{ url }}">Proceed to this site</a>
   <a class="btn btn-success" href="{% url 'url_shortener:index' %}">Shorten another URL</a>
+  <a class="btn btn-danger" href="{{ get_delete_path }}">Delete</a>
 </div>
 {% endblock %}
 
